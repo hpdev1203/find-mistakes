@@ -8,10 +8,10 @@ use Livewire\Component;
 class FindMistake extends Component
 {
     public $timer = 60;
-    public $timerReady = 1;
+    public $timerReady = 3;
     public $isStarted = false;
     public $pageLoad = "waitstart";
-    public $currentRound = 3;
+    public $currentRound = 1;
     public $currentSentence = 0;
     public $currentData = [];
     public $state = "old";
