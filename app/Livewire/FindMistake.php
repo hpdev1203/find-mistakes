@@ -23,13 +23,13 @@ class FindMistake extends Component
             "sentences" => [
                 [
                     "sentence" => 1,
-                    "content" => "<p>She had been <span class='hint'>going</span> to that gym for over a year before she <span class='hint answer'>decides</span> to try a different one.</p>",
-                    "mistake" => "decides",
-                    "correction" => "decided",
+                    "content" => "<p>I <span class='hint'>really</span> <span class='hint'>appreciate</span> the <span class='hint answer'>advices</span> the mentor <span class='hint'>gave</span> me.",
+                    "mistake" => "advices",
+                    "correction" => "advice",
                     "level" => "easy",
                     "point" => 2,
-                    "explanation" => "<p>The sentence is in the past perfect tense. The verb should be in the past participle form. The correct form is <span class='font-bold'>decided</span>.</p>",
-                    "author" => "Huy"
+                    "explanation" => "<p><span class='font-bold'>Advice</span> is an uncountable noun. It does not have a plural form. The correct form is <span class='font-bold'>advice</span>.</p>",
+                    "author" => "Phuc",
                 ],
                 [
                     "sentence" => 2,
@@ -58,13 +58,13 @@ class FindMistake extends Component
             "sentences" => [
                 [
                     "sentence" => 1,
-                    "content" => "<p>She regretted not <span class='hint answer'>to have</span> <span class='hint'>accepted</span> the job offer from the company that <span class='hint'>aligned</span> more with her values.</p>",
-                    "mistake" => "to have",
-                    "correction" => "having",
+                    "content" => "<p>The teacher <span class='hint'>said</span> that <span class='hint'>the earth</span> <span class='hint answer'>moved</span> around <span class='hint'>the sun</span>.",
+                    "mistake" => "moved",
+                    "correction" => "moves",
                     "level" => "easy",
                     "point" => 2,
-                    "explanation" => "<p>The verb <span class='font-bold'>regret</span> is followed by the gerund form of the verb. The correct form is <span class='font-bold'>having</span>.</p>",
-                    "author" => "Jolie",
+                    "explanation" => "<p>It is an obvious fact that the earth moves around the sun, so the verb in the indirect sentence does not change tense. Therefore, <span class='font-bold'>moved</span> must be changed to <span class='font-bold'>moves</span>.</p>",
+                    "author" => "Min",
                 ],
                 [
                     "sentence" => 2,
@@ -93,13 +93,13 @@ class FindMistake extends Component
             "sentences" => [
                 [
                     "sentence" => 1,
-                    "content" => "<p>I <span class='hint'>really</span> <span class='hint'>appreciate</span> the <span class='hint answer'>advices</span> the mentor <span class='hint'>gave</span> me.",
-                    "mistake" => "advices",
-                    "correction" => "advice",
+                    "content" => "<p>She had been <span class='hint'>going</span> to that gym for over a year before she <span class='hint answer'>decides</span> to try a different one.</p>",
+                    "mistake" => "decides",
+                    "correction" => "decided",
                     "level" => "easy",
                     "point" => 2,
-                    "explanation" => "<p><span class='font-bold'>Advice</span> is an uncountable noun. It does not have a plural form. The correct form is <span class='font-bold'>advice</span>.</p>",
-                    "author" => "Phuc",
+                    "explanation" => "<p>The sentence is in the past perfect tense. The verb should be in the past participle form. The correct form is <span class='font-bold'>decided</span>.</p>",
+                    "author" => "Huy"
                 ],
                 [
                     "sentence" => 2,
@@ -163,13 +163,13 @@ class FindMistake extends Component
             "sentences" => [
                 [
                     "sentence" => 1,
-                    "content" => "<p>The teacher <span class='hint'>said</span> that <span class='hint'>the earth</span> <span class='hint answer'>moved</span> around <span class='hint'>the sun</span>.",
-                    "mistake" => "moved",
-                    "correction" => "moves",
+                    "content" => "<p>She regretted not <span class='hint answer'>to have</span> <span class='hint'>accepted</span> the job offer from the company that <span class='hint'>aligned</span> more with her values.</p>",
+                    "mistake" => "to have",
+                    "correction" => "having",
                     "level" => "easy",
                     "point" => 2,
-                    "explanation" => "<p>It is an obvious fact that the earth moves around the sun, so the verb in the indirect sentence does not change tense. Therefore, <span class='font-bold'>moved</span> must be changed to <span class='font-bold'>moves</span>.</p>",
-                    "author" => "Min",
+                    "explanation" => "<p>The verb <span class='font-bold'>regret</span> is followed by the gerund form of the verb. The correct form is <span class='font-bold'>having</span>.</p>",
+                    "author" => "Jolie",
                 ],
                 [
                     "sentence" => 2,
