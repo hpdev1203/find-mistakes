@@ -78,23 +78,22 @@
                         <h1 class="font-['Anton'] text-7xl tracking-widest font-bold text-blue-950">Get Ready!</h1>
                     </div>
                     <div class="flex items-center justify-center mt-5">
-                        <h2 id="countdown" class="font-['Anton'] text-9xl tracking-widest font-bold text-blue-950">5</h2>
+                        <h2 id="countdown" class="font-['Anton'] text-9xl tracking-widest font-bold text-blue-950">{{$timerReady}}</h2>
                     </div>
                 </div>
 
                 @script
                     <script>
                         window.addEventListener('startGame', event => {
-                            let countdown = 1;
+                            let countdown = {{$timerReady}};
                             setTimeout(() => {
                                 const countdownElement = document.getElementById('countdown');
-                                console.log(countdownElement)
                                 const interval = setInterval(() => {
                                     countdown--;
                                     countdownElement.innerText = countdown;
                                     if (countdown === 0) {
                                         clearInterval(interval);
-                                        @this.set('pageLoad', 'sentence1');
+                                        @this.call('nextSentence');
                                     }
                                 }, 1000);
                             }, 500);
@@ -107,54 +106,94 @@
                         <h1 class="font-['Anton'] text-5xl tracking-widest font-bold text-blue-950">Round {{$currentData['round']}} | <span class="text-sky-500">Sentence {{$currentData['sentence']}}</span></h1>
                     </div>
                     <div class="flex items-center justify-center mt-5">
-                        <h2 id="countdown" class="font-['Anton'] text-9xl tracking-widest font-bold text-blue-950">5</h2>
+                        <h2 id="countdown" class="font-['Anton'] text-6xl tracking-widest font-bold text-sky-500">{{$timer}}</h2>
                     </div>
-                    <div class="flex items-center justify-center mt-10">
+                    <div class="flex items-center justify-center p-6 bg-gray-50 rounded-2xl mt-5">
                         <h3 class="font-['Poppins'] text-2xl font-bold text-blue-950">{!!$currentData['content']!!}</h3>
                     </div>
-                    <div id="result" class="hidden flex items-center justify-center">
-                        <h3 class="font-['Anton'] text-2xl font-bold text-blue-950">Answer</h3>
-                        <div class="mt-4">
-                            <p class="font-['Poppins'] text-lg text-blue-950">Mistake: {{$currentData['mistake']}}</p>
-                            <p class="font-['Poppins'] text-lg text-blue-950">Correction: {{$currentData['correction']}}</p>
+                    <div id="result" class="flex items-center justify-center content-center hidden">
+                        <h3 class="font-['Anton'] text-2xl font-bold text-blue-950">Answer :</h3>
+                        <div class="flex items-center justify-center content-center">
+                            <span class="m-5 font-['Poppins'] text-lg text-blue-950 p-2 rounded-md bg-white font-bold text-red-700">{{$currentData['mistake']}}</span>
+                            <span>=></span>
+                            <span class="m-5 font-['Poppins'] text-lg text-blue-950 p-2 rounded-md bg-white font-bold text-green-400">{{$currentData['correction']}}</span>
                         </div>
                     </div>
 
                     <div class="flex items-center justify-center mt-5">
-                        <button wire:click="nextSentence" class="font-['Poppins'] text-xl tracking-widest bg-sky-300 rounded-2xl px-6 py-1.5 font-bold text-blue-950">Next Sentence</button>
+                        @if($isLastOne)
+                            <button wire:click="endGame" class="font-['Poppins'] text-xl tracking-widest bg-sky-300 rounded-2xl px-6 py-1.5 font-bold text-blue-950">Finish</button>
+                        @else
+                            @if($endSencene == false)
+                                <button wire:click="endSentence" class="font-['Poppins'] text-xl tracking-widest bg-red-600 rounded-2xl px-6 py-1.5 font-bold text-blue-950 mr-5">Stop</button>
+                            @endif
+                            <button wire:click="nextSentence" class="font-['Poppins'] text-xl tracking-widest bg-sky-300 rounded-2xl px-6 py-1.5 font-bold text-blue-950">Next Sentence</button>
+                        @endif
                     </div>
                 </div>
                 @script
                     <script>
-                        let countdown = 10;
-                        setTimeout(() => {
-                            const countdownElement = document.getElementById('countdown');
-                            const interval = setInterval(() => {
-                                countdown--;
-                                countdownElement.innerText = countdown;
-                                if (countdown === 5) {
-                                    showHint();
-                                }
-                                if (countdown === 0) {
-                                    clearInterval(interval);
-                                    showResult();
-                                }
-                            }, 1000);
-                        }, 500);
+                        let intervalID;
                         function showHint() {
                                 const allHints = document.getElementsByClassName('hint');
-                                console.log(allHints);
                                 Array.from(allHints).forEach(hint => {
                                     hint.classList.add('bg-sky-300', 'p-2', 'rounded-lg');
                                 });
                             }
 
-                            function showResult() {
-                                const countdownElement = document.getElementById('countdown');
-                                document.getElementById('result').classList.remove('hidden');
-                                countdownElement.classList.add('hidden');
-                                document.getElementById('result').classList.add('animate-jump-in', 'animate-duration-[2000ms]', 'animate-delay-1000', 'animate-ease-linear');
+                        function showResult() {
+                            const allHints = document.getElementsByClassName('hint');
+                            Array.from(allHints).forEach(hint => {
+                                hint.classList.remove('bg-sky-300', 'p-2', 'rounded-lg');
+                            });
+                            const answer = document.getElementsByClassName('answer');
+                            answer[0].classList.add('bg-red-600', 'p-2', 'rounded-lg');
+                            const countdownElement = document.getElementById('countdown');
+                            document.getElementById('result').classList.remove('hidden');
+                            countdownElement.classList.add('hidden');
+                            document.getElementById('result').classList.add('animate-jump-in', 'animate-duration-[2000ms]', 'animate-delay-1000', 'animate-ease-linear');
+                        }
+                        window.addEventListener('nextSentence', event => {
+                            let countdown = {{$timer}};
+                            if (intervalID) {
+                                clearInterval(intervalID);
                             }
+                            setTimeout(() => {
+                                const countdownElement = document.getElementById('countdown');
+                                intervalID = setInterval(() => {
+                                    countdown--;
+                                    countdownElement.innerText = countdown;
+                                    if (countdown === 30) {
+                                        countdownElement.classList.add('text-orange-500');
+                                        showHint();
+                                    }
+                                    if (countdown === 20) {
+                                        countdownElement.classList.add('text-red-400');
+                                    }
+                                    if (countdown <= 10) {
+                                        countdownElement.classList.remove('animate-jump');
+                                        void countdownElement.offsetWidth;
+                                        countdownElement.classList.add('text-red-600', 'animate-jump');
+                                    }
+                                    if (countdown === 0) {
+                                        countdownElement.classList.add('text-red-900');
+                                        clearInterval(intervalID);
+                                        setTimeout(() => {
+                                            showResult();
+                                        }, 1000);
+                                    }
+                                }, 1000);
+                            }, 500);
+                        });
+                        window.addEventListener('endSentence', event => {
+                            if (intervalID) {
+                                clearInterval(intervalID);
+                                setTimeout(() => {
+                                    showHint();
+                                    showResult();
+                                }, 1000);
+                            }
+                        }); 
                     </script>
                 @endscript
             @endif
