@@ -140,7 +140,7 @@
                         function showHint() {
                                 const allHints = document.getElementsByClassName('hint');
                                 Array.from(allHints).forEach(hint => {
-                                    hint.classList.add('underline-offset-4', 'p-2', 'rounded-lg');
+                                    hint.classList.add('bg-sky-300', 'p-2', 'rounded-lg');
                                 });
                             }
 

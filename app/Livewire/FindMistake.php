@@ -11,7 +11,7 @@ class FindMistake extends Component
     public $timerReady = 1;
     public $isStarted = false;
     public $pageLoad = "waitstart";
-    public $currentRound = 1;
+    public $currentRound = 3;
     public $currentSentence = 0;
     public $currentData = [];
     public $state = "old";
