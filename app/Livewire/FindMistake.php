@@ -43,7 +43,7 @@ class FindMistake extends Component
                 ],
                 [
                     "sentence" => 3,
-                    "content" => "<p>The teacher <span class='hint'>gave</span> the students <span class='hint answer'>book</span> to read over the summer.</p>",
+                    "content" => "<p>The teacher <span class='hint'>gave</span> the students <span class='hint answer'>book</span> to read over <span class='hint'>the summer</span>.</p>",
                     "mistake" => "book",
                     "correction" => "a book",
                     "level" => "easy",
@@ -93,7 +93,7 @@ class FindMistake extends Component
             "sentences" => [
                 [
                     "sentence" => 1,
-                    "content" => "<p>She had been <span class='hint'>going</span> to that gym for over a year before she <span class='hint answer'>decides</span> to try a different one.</p>",
+                    "content" => "<p>She had been <span class='hint'>going</span> to that gym for over a year before she <span class='hint answer'>decides</span> to try a different <span class='hint'>one</span>.</p>",
                     "mistake" => "decides",
                     "correction" => "decided",
                     "level" => "easy",
@@ -138,7 +138,7 @@ class FindMistake extends Component
                 ],
                 [
                     "sentence" => 2,
-                    "content" => "<p>She is the <span class='hint'>nicest</span> woman <span class='hint answer'>whom</span> I have ever known.</p>",
+                    "content" => "<p>She <span class='hint'>is</span> the <span class='hint'>nicest</span> woman <span class='hint answer'>whom</span> I have ever known.</p>",
                     "mistake" => "whom",
                     "correction" => "that",
                     "level" => "easy",
