@@ -109,7 +109,7 @@
                         <h2 id="countdown" class="font-['Anton'] text-6xl tracking-widest font-bold text-sky-500">{{$timer}}</h2>
                     </div>
                     <div class="flex items-center justify-center p-6 bg-gray-50 rounded-2xl mt-5">
-                        <h3 class="font-['Poppins'] text-2xl font-bold text-blue-950">{!!$currentData['content']!!}</h3>
+                        <h3 class="font-['Poppins'] text-2xl font-bold text-blue-950 leading-8">{!!$currentData['content']!!}</h3>
                     </div>
                     <div id="result" class="flex items-center justify-center content-center hidden">
                         <h3 class="font-['Anton'] text-2xl font-bold text-blue-950">Answer :</h3>
@@ -118,6 +118,9 @@
                             <span>=></span>
                             <span class="m-5 font-['Poppins'] text-lg text-blue-950 p-2 rounded-md bg-white font-bold text-green-400">{{$currentData['correction']}}</span>
                         </div>
+                    </div>
+                    <div id="explaination" class="flex p-6 bg-green-200 content-center rounded-2xl mt-5 hidden">
+                        {!!$currentData['explanation']!!}
                     </div>
 
                     <div class="flex items-center justify-center mt-5">
@@ -137,7 +140,7 @@
                         function showHint() {
                                 const allHints = document.getElementsByClassName('hint');
                                 Array.from(allHints).forEach(hint => {
-                                    hint.classList.add('bg-sky-300', 'p-2', 'rounded-lg');
+                                    hint.classList.add('underline-offset-4', 'p-2', 'rounded-lg');
                                 });
                             }
 
@@ -150,8 +153,10 @@
                             answer[0].classList.add('bg-red-600', 'p-2', 'rounded-lg');
                             const countdownElement = document.getElementById('countdown');
                             document.getElementById('result').classList.remove('hidden');
+                            document.getElementById('explaination').classList.remove('hidden');
                             countdownElement.classList.add('hidden');
                             document.getElementById('result').classList.add('animate-jump-in', 'animate-duration-[2000ms]', 'animate-delay-1000', 'animate-ease-linear');
+                            document.getElementById('explaination').classList.add('animate-jump-in', 'animate-duration-[2000ms]', 'animate-delay-1000', 'animate-ease-linear');
                         }
                         window.addEventListener('nextSentence', event => {
                             let countdown = {{$timer}};
