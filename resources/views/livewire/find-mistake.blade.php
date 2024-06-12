@@ -103,7 +103,7 @@
             @else
                 <div class="w-full">
                     <div class="flex items-center justify-center">
-                        <h1 class="font-['Anton'] text-5xl tracking-widest font-bold text-blue-950">Round {{$currentData['round']}} | <span class="text-sky-500">Sentence {{$currentData['sentence']}}</span></h1>
+                        <h1 class="font-['Anton'] text-5xl tracking-widest font-bold text-blue-950">Round {{$currentData['round']}} | <span class="text-sky-500">Sentence {{$currentData['sentence']}}</span> | By {{$currentData['author']}}</h1>
                     </div>
                     <div class="flex items-center justify-center mt-5">
                         <h2 id="countdown" class="font-['Anton'] text-6xl tracking-widest font-bold text-sky-500">{{$timer}}</h2>
