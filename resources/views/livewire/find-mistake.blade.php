@@ -32,7 +32,7 @@
                             <div class="w-4/5 content-center">
                                 <ul class="list-disc pl-6 leading-6 text-">
                                     <li>The game will have <b>5 rounds</b>, each round will have <b>3 questions</b> and each team will have 1 member to participate.</li>
-                                    <li class="mt-5">The rule of the game is that each sentence will have at <b>least one mistake</b>. Whoever finds the mistakes and fixes it fastest will win <b>(Before 30 seconds you will get 2 points, after 30 seconds you will have a hint, you will get 1 point)</b>.</li>
+                                    <li class="mt-5">The rule of the game is that each sentence will have one mistake. Whoever finds the mistakes and fixes it fastest will win <b>(Before 30 seconds you will get 2 points, after 30 seconds you will have a hint, you will get 1 point)</b>.</li>
                                 </ul>
                             </div>
                         </div>
@@ -125,6 +125,9 @@
 
                     <div class="flex items-center justify-center mt-5">
                         @if($isLastOne)
+                            @if($endSencene == false)
+                                <button wire:click="endSentence" class="font-['Poppins'] text-xl tracking-widest bg-red-600 rounded-2xl px-6 py-1.5 font-bold text-blue-950 mr-5">Stop</button>
+                            @endif
                             <button wire:click="endGame" class="font-['Poppins'] text-xl tracking-widest bg-sky-300 rounded-2xl px-6 py-1.5 font-bold text-blue-950">Finish</button>
                         @else
                             @if($endSencene == false)
